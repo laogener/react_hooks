@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropsDemo from "./PropsDemo";
+import PropsMemo from "./PropsMemo";
 import CondictionLoop from "./CondictionLoop";
 import logo from './react.png'
 import './App.css'
@@ -53,7 +53,7 @@ class App extends Component {
                 <p>{this.state.msg}</p>
                 <p>{this.state.count}</p>
                 {/*组件属性传递 props*/}
-                <PropsDemo title='父级传入的数据'></PropsDemo>
+                <PropsMemo title='父级传入的数据'></PropsMemo>
                 {/*条件渲染和数据循环渲染*/}
                 <CondictionLoop title='条件渲染'></CondictionLoop>
 

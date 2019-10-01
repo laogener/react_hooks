@@ -1,7 +1,7 @@
 // class组件
 // import React, {Component} from 'react';
 //
-// class PropsDemo extends Component {
+// class PropsMemo extends Component {
 //     render() {
 //         return (
 //             <div>
@@ -11,18 +11,18 @@
 //     }
 // }
 //
-// export default PropsDemo;
+// export default PropsMemo;
 
 // 函数式组件
 import React from 'react'
 
-// export default function PropsDemo(props) {
+// export default function PropsMemo(props) {
 //     return (
 //         <div> {props.title}</div>
 //     )
 // }
 // 接收参数的解构写法
-export default function PropsDemo({title}) {
+export default function PropsMemo({title}) {
     return (
         <div> {title}</div>
     )
