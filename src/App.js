@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import PropsDemo from "./PropsDemo";
 import CondictionLoop from "./CondictionLoop";
-
+import logo from './react.png'
+import './App.css'
 
 class App extends Component {
     constructor(props){
         super(props);
         this.state = {
             msg:'constructor内的变量',
-            count:0
+            count:0,
+            inputVal:'我是input的初始值'
         }
     }
 
@@ -36,7 +38,11 @@ class App extends Component {
         })
         console.log(this.state.count,'这里是先输出的')
     }
-
+    inputValChange(e){
+        this.setState({
+            inputVal:e.target.value
+        })
+    }
     render() {
         const msg = 'render内的变量';
         return (
@@ -50,6 +56,12 @@ class App extends Component {
                 <PropsDemo title='父级传入的数据'></PropsDemo>
                 {/*条件渲染和数据循环渲染*/}
                 <CondictionLoop title='条件渲染'></CondictionLoop>
+
+                <img src={logo} style={{width:'100px'}} className='logo' alt=""/>
+
+                <h1>React数据双向绑定</h1>
+                <input type="text" value={this.state.inputVal} onChange={e => this.inputValChange(e)}/>
+                {this.state.inputVal}
             </div>
         );
     }
