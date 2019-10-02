@@ -20,9 +20,10 @@ const withLifeCycle = (Com) => {
         }
     }
     return NewComponent
-};
-// @withLearnReact
-// @withLifeCycle
+}
+// 高阶组件装饰器写法
+@withLearnReact
+@withLifeCycle
 class Hoc extends Component {
     render() {
         return (
