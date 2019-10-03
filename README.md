@@ -15,8 +15,8 @@ webStrom快捷键快速创建React组件：
 14.rwwd + tab键 - - 在没有导入的情况下，在ES6模块系统中创建一个有构造函数、空状态、proptypes和导出的React组件类。(主要用于React时，proptype由webpack提供插件提供)
 
 
-高阶组件、高阶组件装饰器   Hoc.js  
+高阶组件、高阶组件装饰器(命名时一般以with开头)   Hoc.js  
 上下文  Context2.js
 插槽  Composition.js  
 React.memo,状态改变时，只执行改变的组件的render，以求减少性能消耗     PureDemo.js  
-Hook api  Hook文件夹  
+Hook api（自定义hooks时，一般用use开头）  Hook文件夹  
