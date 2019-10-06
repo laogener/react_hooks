@@ -14,18 +14,19 @@ import ReactDOM from 'react-dom'
 // import OtherHooks from "./Hook/OtherHooks";
 // import CustomHook from "./Hook/CustomHook";
 
-// Redux
-import FirstRedux from "./Redux/FirstRedux";
-// import store from "./Redux/store";
-// react-redux
-import {Provider} from 'react-redux';
+// // Redux
+// import FirstRedux from "./Redux/FirstRedux";
+// // import store from "./Redux/store";
+// // react-redux
+// import {Provider} from 'react-redux';
+//
+// // 抽离
+// import {createStore,applyMiddleware} from "redux";
+// import logger from 'redux-logger'
+// import thunk from "redux-thunk";
+// import {firstReducer} from './Redux/count.redux'
 
-// 抽离
-import {createStore,applyMiddleware} from "redux";
-import logger from 'redux-logger'
-import thunk from "redux-thunk";
-import {firstReducer} from './Redux/count.redux'
-
+import RouterSample from "./Router/RouterSample";
 
 // ReactDOM.render(<App></App>,document.getElementById('root'));
 // ReactDOM.render(<LifeCycle></LifeCycle>,document.getElementById('root'));
@@ -49,10 +50,12 @@ import {firstReducer} from './Redux/count.redux'
 
 // react-redux
 
-const store = createStore(firstReducer,applyMiddleware(thunk,logger));
+// const store = createStore(firstReducer,applyMiddleware(thunk,logger));
+//
+// ReactDOM.render(
+//     <Provider store={store}>
+//         <FirstRedux></FirstRedux>
+//     </Provider>
+//     ,document.getElementById('root'));
 
-ReactDOM.render(
-    <Provider store={store}>
-        <FirstRedux></FirstRedux>
-    </Provider>
-    ,document.getElementById('root'));
+ReactDOM.render(<RouterSample></RouterSample>,document.getElementById('root'));
