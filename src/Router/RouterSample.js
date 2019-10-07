@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {BrowserRouter,Link,Route,Switch,Redirect} from "react-router-dom";
 
+
+import {connect,Provider} from 'react-redux'
+import store from "../Redux";
+import {login} from '../Redux/user.redux'
+
 function App() {
     return (
         <div>
@@ -30,45 +35,48 @@ function App() {
 }
 
 // 编写路由守卫组件进行权限控制
+@connect(state=> ({isLogin:state.user.isLogin}))
 class RouteGuard extends Component{
 
     render() {
         return (
-            <Route render={props => {
-                return auth.islogin ? <Route path='/mine' component={Mine}></Route> : (<Redirect to={{pathname:'/login',state:{from:props.location.pathname}}}></Redirect>)
-            }}></Route>
+            <Route render={props => (
+                this.props.islogin ? <Route path='/mine' component={Mine}></Route> : (<Redirect to={{pathname:'/login',state:{from:props.location.pathname}}}></Redirect>)
+                )}></Route>
         )
 
     }
 }
 // 模拟接口
-const auth = {
-    islogin:false,
-    login(callback){
-     this.islogin = true;
-     setTimeout(callback,1000)
-    }
-}
+// const auth = {
+//     islogin:false,
+//     login(callback){
+//      this.islogin = true;
+//      setTimeout(callback,1000)
+//     }
+// }
+@connect(state=>({isLogin:state.user.isLogin}),{login})
 class Login extends Component {
-    state = {
-        isLogin:false
-    };
-    login = () => {
-        auth.login(() => {
-            this.setState({isLogin : true})
-        })
-    }
+    // state = {
+    //     isLogin:false
+    // };
+    // login = () => {
+    //     auth.login(() => {
+    //         this.setState({isLogin : true})
+    //     })
+    // }
     render() {
         const from = this.props.location.state && this.props.location.state.from || '/';
-        if(this.state.isLogin){
-            return <Redirect to={from}></Redirect>
+        if(this.props.isLogin){
+            return (<Redirect to={from}></Redirect>)
         }
         return (
             <div>
                 <p>请先登录</p>
-                <button onClick={() => this.login()}>登录</button>
+                <button onClick={this.props.login}>登录</button>
             </div>
         )
+
     }
 
 
@@ -130,7 +138,9 @@ const RouterSample = () => {
         <div>
             <h1>演示react-router4.x版本的使用</h1>
             <BrowserRouter>
-                <App></App>
+                <Provider store={store}>
+                    <App></App>
+                </Provider>
             </BrowserRouter>
         </div>
     );

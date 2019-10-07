@@ -1,5 +1,5 @@
 // 统一管理reducer和action
-const firstReducer = (state = 0, action) => {
+const firstReducer = (state = 10, action) => {
     switch (action.type) {
         case 'add':
             return state + 1;
